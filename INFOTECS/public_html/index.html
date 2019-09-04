@@ -3,22 +3,15 @@
     <head>
         <title>Solution</title>
         <meta charset="UTF-8">
-        <style>
-            table th{
-                padding: 20px;
-                border: 1px solid black;
-                background-color: #B0C4DE;
-            }
-            table td{
-                padding: 20px;
-                border: 1px solid black;
-            }
-        </style>
-    </head>
-    <body>
-        <table id="table">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="JS/date.js"></script>
+        </head>
+        <body>
+        <div id="inpdiv"><input id="searchPhrase" type="text" placeholder="Введите данные" onkeyup="tableSearch()"></div>
+        <table id="table" >
             <tr>
-                <th>Идентификатор</th>
+                <th class="column1"><div class="vis"><a href="#" id="vanish"><img src="./img/vis.png" class="visIMG" alt="image"/></a></div>
+                    Идентификатор</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
                 <th>email</th>
@@ -27,7 +20,7 @@
                 <th>Изображение</th>
             </tr>
         </table>
-    <script type="text/javascript" src="JS/date.js"></script>
-    <script type="text/javascript" src="JS/script.js"></script>    
+        <div id="whiteblok"></div>
+        <script src="JS/script.js"></script> 
     </body>
 </html>
