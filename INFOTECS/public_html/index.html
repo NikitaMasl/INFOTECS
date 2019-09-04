@@ -10,7 +10,7 @@
         <div id="inpdiv"><input id="searchPhrase" type="text" placeholder="Введите данные" onkeyup="tableSearch()"></div>
         <table id="table" >
             <tr>
-                <th class="column1"><div class="vis"><a href="#" id="vanish"><img src="./img/vis.png" class="visIMG" alt="image"/></a></div>
+                <th><div class="vis"><a href="#" onclick="vanish()"><img src="./img/vis.png" class="visIMG"></a><a href="#" onclick="appear()"><img src="./img/vis1.png" class="visIMG1"></a></div>
                     Идентификатор</th>
                 <th>Имя</th>
                 <th>Фамилия</th>
@@ -20,7 +20,7 @@
                 <th>Изображение</th>
             </tr>
         </table>
-        <div id="whiteblok"></div>
+        <div id="whiteblok1"></div>
         <script src="JS/script.js"></script> 
     </body>
 </html>

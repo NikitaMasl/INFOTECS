@@ -1,4 +1,3 @@
-
 var table = document.querySelector('#table');
 for (i=0; i<date.length; i++) {
     var Obj = date[i];
@@ -22,12 +21,12 @@ for (i=0; i<date.length; i++) {
     memo.classList.add('column6');
     imgTD.classList.add('column7');
 
-    id.textContent = Obj.id;
-    nameFirst.textContent = Obj.name.first;
-    nameLast.textContent = Obj.name.last;
-    email.textContent = Obj.email;
-    gender.textContent = Obj.gender;
-    memo.textContent = Obj.memo;
+    id.innerHTML = Obj.id;
+    nameFirst.innerHTML = Obj.name.first;
+    nameLast.innerHTML = Obj.name.last;
+    email.innerHTML = Obj.email;
+    gender.innerHTML = Obj.gender;
+    memo.innerHTML = Obj.memo;
 
     tr.appendChild(id);
     tr.appendChild(nameFirst);
@@ -40,6 +39,8 @@ for (i=0; i<date.length; i++) {
 
     table.appendChild(tr);
 }
+
+
 function tableSearch() {
     var phrase = document.getElementById('searchPhrase');
     var regPhrase = new RegExp(phrase.value, 'i');
@@ -56,10 +57,20 @@ function tableSearch() {
             table.rows[i].style.display = "none";
         }
     }
+}   
+function vanish(){
+    var column1 = document.getElementsByClassName('column1');
+    document.querySelector('.visIMG').style.display = 'none';
+    document.querySelector('.visIMG1').style.display = 'block';
+    for (var i = 0; i < column1.length; i++)
+    column1[i].style.visibility = "hidden";
+    
 }
-window.onload = function () {
-    document.getElementById("vanish").onclick = function () {
-        var column = document.getElementsByClassName('column1');
-    };
-};
-  
+
+function appear(){
+    var column1 = document.getElementsByClassName('column1');
+    document.querySelector('.visIMG').style.display = 'block';
+    document.querySelector('.visIMG1').style.display = 'none';
+    for (var i = 0; i < column1.length; i++)
+    column1[i].style.visibility = "visible";
+    }
