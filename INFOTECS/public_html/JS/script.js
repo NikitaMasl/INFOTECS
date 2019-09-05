@@ -58,19 +58,22 @@ function tableSearch() {
         }
     }
 }   
-function vanish(){
-    var column1 = document.getElementsByClassName('column1');
-    document.querySelector('.visIMG').style.display = 'none';
-    document.querySelector('.visIMG1').style.display = 'block';
-    for (var i = 0; i < column1.length; i++)
-    column1[i].style.visibility = "hidden";
-    
+function vanish(key,key1,key2){
+    var column = document.getElementsByClassName(key);
+    var IMG1 = document.getElementById(key1);
+    var IMG2 = document.getElementById(key2); 
+    if(IMG1.style.display === 'none'){
+        IMG1.style.display = 'block';
+        IMG2.style.display = 'none';
+        for (var i = 0; i < column.length; i++){
+            column[i].style.visibility = "visible";
+        }
+    } else{
+        IMG1.style.display = 'none';
+        IMG2.style.display = 'block';
+        for (var i = 0; i < column.length; i++){
+        column[i].style.visibility = "hidden";
+        }
+    }    
 }
 
-function appear(){
-    var column1 = document.getElementsByClassName('column1');
-    document.querySelector('.visIMG').style.display = 'block';
-    document.querySelector('.visIMG1').style.display = 'none';
-    for (var i = 0; i < column1.length; i++)
-    column1[i].style.visibility = "visible";
-    }
