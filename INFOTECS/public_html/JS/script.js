@@ -40,11 +40,10 @@ for (i=0; i<date.length; i++) {
     table.appendChild(tr);
 }
 
-
 function tableSearch() {
-    var phrase = document.getElementById('searchPhrase');
-    var regPhrase = new RegExp(phrase.value, 'i');
-    var flag = false;
+   var phrase = document.getElementById('searchPhrase');
+   var regPhrase = new RegExp(phrase.value, 'i');
+   var flag = false;
     for (var i = 1; i < table.rows.length; i++) {
         flag = false;
         for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
@@ -57,7 +56,19 @@ function tableSearch() {
             table.rows[i].style.display = "none";
         }
     }
-}   
+    var input = document.querySelector('#searchPhrase'),
+    td = table.querySelectorAll('tr:nth-child(n+2) td');
+    input.addEventListener('input', function() {
+    var val = this.value,
+            reg = new RegExp("("+val+")", "gi");
+    [].forEach.call( document.querySelectorAll('span.hot'), function(el) {
+        el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+    });
+     val && [].forEach.call(td, function(el) {
+         el.innerHTML = el.textContent.replace(reg, "<span class='hot'>$1</span>");
+        });
+    });
+}
 function vanish(key,key1,key2){
     var column = document.getElementsByClassName(key);
     var IMG1 = document.getElementById(key1);
@@ -76,4 +87,3 @@ function vanish(key,key1,key2){
         }
     }    
 }
-
