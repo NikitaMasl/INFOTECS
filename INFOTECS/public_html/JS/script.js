@@ -12,6 +12,14 @@ for (i=0; i<date.length; i++) {
     var imgTD = document.createElement('td');
     var img = document.createElement('img');
     img.src= Obj.img ;
+    var remarktd = document.createElement('td');
+    var remark = document.createElement('input');
+    remark.type = 'button';
+    remark.value = 'Редактировать';
+    remark.setAttribute('onclick', 'remarkTD()');
+
+    var str = date[i].memo.toString();
+    var arr = str.split(' ');
 
     id.classList.add('column1');
     nameFirst.classList.add('column2');
@@ -26,8 +34,9 @@ for (i=0; i<date.length; i++) {
     nameLast.innerHTML = Obj.name.last;
     email.innerHTML = Obj.email;
     gender.innerHTML = Obj.gender;
-    memo.innerHTML = Obj.memo;
+    memo.innerHTML = arr;
 
+        
     tr.appendChild(id);
     tr.appendChild(nameFirst);
     tr.appendChild(nameLast);
@@ -36,6 +45,9 @@ for (i=0; i<date.length; i++) {
     tr.appendChild(memo);
     tr.appendChild(imgTD);
     imgTD.appendChild(img);
+
+    remarktd.appendChild(remark);
+    tr.appendChild(remarktd);
 
     table.appendChild(tr);
 }
