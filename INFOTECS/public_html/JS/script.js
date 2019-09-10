@@ -99,3 +99,8 @@ function vanish(key,key1,key2){
         }
     }    
 }
+function remarkTD(){
+    var ID = remark.closest('tr').childNodes[0];
+    var txt = document.createTextNode("wdsgvsgbvsdb");
+    ID.appendChild(txt);
+}
