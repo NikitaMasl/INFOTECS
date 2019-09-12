@@ -1,7 +1,9 @@
 var table = document.querySelector('#table');
+
 for (i=0; i<date.length; i++) {
     var Obj = date[i];
     var tr = document.createElement('tr');
+    tr.id = "tr_" + i;
     
     var id =  document.createElement('td');  
     var nameFirst =  document.createElement('td');  
@@ -15,8 +17,9 @@ for (i=0; i<date.length; i++) {
     var remarktd = document.createElement('td');
     var remark = document.createElement('input');
     remark.type = 'button';
+    remark.id = 'btn_' + i;
     remark.value = 'Редактировать';
-    remark.setAttribute('onclick', 'remarkTD()');
+    remark.setAttribute('onclick', 'remarkTD(' + i + ')');
 
     var str = date[i].memo.toString();
     var arr = str.split(' ');
@@ -99,8 +102,124 @@ function vanish(key,key1,key2){
         }
     }    
 }
-function remarkTD(){
-    var ID = remark.closest('tr').childNodes[0];
-    var txt = document.createTextNode("wdsgvsgbvsdb");
-    ID.appendChild(txt);
+var tr, ID, FN, LN, em, Ge, Me;
+function remarkTD(btn_id){
+    var DIVform = document.createElement('div');
+    DIVform.id = 'DIVform';
+        var inptID = document.createElement('input');
+    inptID.type = 'text';
+    inptID.id = 'inptID';
+    inptID.placeholder = 'Идентификатор';
+        var inptnameFirst = document.createElement('input');
+    inptnameFirst.type = 'text';
+    inptnameFirst.id = 'inptnameFirst';
+    inptnameFirst.placeholder = 'Имя';
+        var inptnameLast = document.createElement('input');
+    inptnameLast.type = 'text';
+    inptnameLast.id = 'inptnameLast';
+    inptnameLast.placeholder = 'Фамилия';
+        var inptemail = document.createElement('input');
+    inptemail.type = 'text';
+    inptemail.id = 'inptemail';
+    inptemail.placeholder = 'email';
+        var inptgender = document.createElement('input');
+    inptgender.type = 'text';
+    inptgender.id = 'inptgender';
+    inptgender.placeholder = 'Пол';
+        var inptMemo = document.createElement('input');
+    inptMemo.type = 'text';
+    inptMemo.id = 'inptMemo';
+    inptMemo.placeholder = 'Ключевые фразы';
+        var closeForm = document.createElement('input');
+    closeForm.id = 'closeForm';
+    closeForm.value = 'Закрыть';
+    closeForm.type = 'button';
+    closeForm.setAttribute('onclick', 'closeForm()');
+        var acceptForm = document.createElement('input');
+    acceptForm.id = 'acceptForm';
+    acceptForm.value = 'Принять';
+    acceptForm.type = 'button';
+    acceptForm.setAttribute('onclick', 'acceptForm()');
+    
+        DIVform.appendChild(inptID);
+        DIVform.appendChild(inptnameFirst);
+        DIVform.appendChild(inptnameLast);
+        DIVform.appendChild(inptemail);
+        DIVform.appendChild(inptgender);
+        DIVform.appendChild(inptMemo);
+        DIVform.appendChild(acceptForm);
+        DIVform.appendChild(closeForm);
+        
+    document.body.appendChild(DIVform);
+    
+    tr = 'tr_' + btn_id;
+    ID = document.getElementById(tr).querySelector('.column1');
+    FN = document.getElementById(tr).querySelector('.column2');
+    LN = document.getElementById(tr).querySelector('.column3');
+    em = document.getElementById(tr).querySelector('.column4');
+    Ge = document.getElementById(tr).querySelector('.column5');
+    Me = document.getElementById(tr).querySelector('.column6');
+}   
+    function acceptForm(){
+        var inptID = document.getElementById('inptID');
+        var inptnameFirst = document.getElementById('inptnameFirst');
+        var inptnameLast = document.getElementById('inptnameLast');
+        var inptemail = document.getElementById('inptemail');
+        var inptgender = document.getElementById('inptgender');
+        var inptMemo = document.getElementById('inptMemo');
+    
+        var inptIDvalue = inptID.value;
+        var inptnameFirstvalue = inptnameFirst.value;
+        var inptnameLastvalue = inptnameLast.value;
+        var inptemailvalue = inptemail.value;
+        var inptgendervalue = inptgender.value;
+        var inptMemovalue = inptMemo.value;
+    if (inptIDvalue === ''){
+inptID.style.borderColor = 'red';
+}else{
+    ID.innerHTML = inptIDvalue;
+    inptID.style.borderColor = 'none';
+}
+
+    if (inptnameFirstvalue === ''){
+inptnameFirst.style.borderColor = 'red';
+}else{
+    FN.innerHTML = inptnameFirstvalue;
+    inptnameFirst.style.borderColor = 'none';
+}
+
+    if (inptnameLastvalue === ''){
+inptnameLast.style.borderColor = 'red';
+}else{
+    LN.innerHTML = inptnameLastvalue;
+    inptnameLast.style.borderColor = 'none';
+}
+
+    var validation = inptemailvalue.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
+    if (!validation){
+inptemail.style.borderColor = 'red';
+}else{
+    em.innerHTML = inptemailvalue;
+    inptemail.style.borderColor = 'none';
+}
+
+    if ((inptgendervalue==='Male')||(inptgendervalue==='Female')){
+    Ge.innerHTML = inptgendervalue;
+    inptgender.style.borderColor = 'none';
+}else{
+    inptgender.style.borderColor = 'red';
+
+}
+
+if (inptMemovalue === ''){
+inptMemo.style.borderColor = 'red';
+}else{
+    Me.innerHTML = inptMemovalue;
+    inptMemo.style.borderColor = 'none';
+}
+}
+    
+function closeForm(){
+    var DIVform1 = document.getElementById('DIVform'); 
+    DIVform1.parentNode.removeChild(DIVform1);
 }
